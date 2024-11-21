@@ -1,5 +1,9 @@
 package com.example.percobaan7
 
+import com.example.percobaan7.model.JenisKelamin.jenisKelamin
+import com.example.percobaan7.ui.view.FormulirView
+import com.example.percobaan7.ui.view.TampilDataView
+import com.example.percobaan7.viewmodel.SiswaViewModel
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -7,7 +11,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.percobaan7.viewmodel.SiswaViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 
 enum class Halaman{
@@ -35,7 +43,7 @@ fun NavigationControl(
             FormulirView(
                 listJK = jenisKelamin.map { id ->
                     context.getString(id)
-                },
+                                          },
                 onSubmitClicked = {
                     viewModel.saveDataSiswa(it)
                     navHost.navigate(Halaman.TAMPILDATA.name)
@@ -49,3 +57,4 @@ fun NavigationControl(
         }
     }
 }
+
