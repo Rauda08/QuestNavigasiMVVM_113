@@ -24,3 +24,35 @@ fun TampilDataView(
             .fillMaxSize()
             .padding(16.dp)
 
+    ) {
+        TampilData(param = "Nama", argu = uiState.nama)
+        TampilData(param = "NIM", argu = uiState.NIM)
+        TampilData(param = "email", argu = uiState.email)
+        TampilData(param = "Alamat", argu = uiState.alamat)
+        TampilData(param = "Jenis Kelamin", argu = uiState.gender)
+        TampilData(param = "NoTelepon", argu = uiState.notelepon)
+        Button(onClick = onBackButton) {
+            Text(text = "Kembali")
+        }
+    }
+}
+@Composable
+fun TampilData(
+    param:String, argu:String
+){
+    Column (
+        modifier = Modifier.padding(16.dp)
+    ){
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(text = param,
+                modifier = Modifier.weight(0.8f))
+            Text(text = ": ",
+                modifier = Modifier.weight(0.2f))
+            Text(text = argu,
+                modifier = Modifier.weight(2f))
+        }
+    }
+}
